@@ -1,8 +1,6 @@
+import { MatchData } from '../MatchData';
 import { MatchResult } from '../MatchResult';
 import { dataStringToDate } from '../utils';
-
-// Tuples
-type MatchData = [Date, string, string, number, number, MatchResult, string];
 
 interface DataReader {
   read(): void;
