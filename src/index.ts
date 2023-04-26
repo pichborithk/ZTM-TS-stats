@@ -28,9 +28,9 @@ import { MatchReader } from './composition/MatchReader';
 import { ConsoleReport } from './reportTargets/ConsoleReport';
 import { HTMLReport } from './reportTargets/HTMLReport';
 
-const csvFileReader = new CSVFileReader('football.csv');
-
-const matchReader = new MatchReader(csvFileReader);
+// const csvFileReader = new CSVFileReader('football.csv');
+// const matchReader = new MatchReader(csvFileReader);
+const matchReader = MatchReader.readCSVFile('football.csv');
 matchReader.load();
 
 // for (let match of matchReader.matches) {
@@ -54,5 +54,6 @@ const summaryArsenal = new Summary(
   new WinsAnalysis('Arsenal'),
   new HTMLReport()
 );
+// const summaryArsenal = Summary.winsAnalysisWithHTMLReport('Arsenal');
 
 summaryArsenal.buildAndPrintReport(matchReader.matches);
