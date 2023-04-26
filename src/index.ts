@@ -26,6 +26,7 @@ import { WinsAnalysis } from './analyzers/WinsAnalysis';
 import { CSVFileReader } from './composition/CSVFileReader';
 import { MatchReader } from './composition/MatchReader';
 import { ConsoleReport } from './reportTargets/ConsoleReport';
+import { HTMLReport } from './reportTargets/HTMLReport';
 
 const csvFileReader = new CSVFileReader('football.csv');
 
@@ -42,9 +43,16 @@ matchReader.load();
 
 // console.log(`Man United won ${manUnitedWins} games`);
 
-const summary = new Summary(
+const summaryManUnited = new Summary(
   new WinsAnalysis('Man United'),
   new ConsoleReport()
 );
 
-summary.buildAndPrintReport(matchReader.matches);
+summaryManUnited.buildAndPrintReport(matchReader.matches);
+
+const summaryArsenal = new Summary(
+  new WinsAnalysis('Arsenal'),
+  new HTMLReport()
+);
+
+summaryArsenal.buildAndPrintReport(matchReader.matches);
